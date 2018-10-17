@@ -1,0 +1,34 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'io.fabric'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId 'io.camerakit.camerax'
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName '1.0.0'
+    }
+    buildTypes {
+        debug {
+            manifestPlaceholders = [crashlyticsEnabled: 'false']
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [crashlyticsEnabled: 'true']
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.71'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    implementation 'com.google.firebase:firebase-core:16.0.4'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.5'
+}
+
+apply plugin: 'com.google.gms.google-services'
